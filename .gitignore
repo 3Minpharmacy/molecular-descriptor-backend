@@ -1,0 +1,78 @@
+# =============================================================================
+# .gitignore — MolecularMind backend
+# =============================================================================
+
+# --- Python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.whl
+MANIFEST
+
+# --- Virtual environments ----------------------------------------------------
+.venv/
+venv/
+ENV/
+env/
+.env/
+env.bak/
+venv.bak/
+.python-version
+
+# --- Environment / secrets ---------------------------------------------------
+.env
+.env.*
+!.env.example          # Allow the example template to be committed
+
+# --- Testing / coverage ------------------------------------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+nosetests.xml
+pytest.xml
+
+# --- Linting / type checking -------------------------------------------------
+.mypy_cache/
+.ruff_cache/
+.pytype/
+
+# --- IDE / editor ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- Jupyter (if used for exploration) ---------------------------------------
+.ipynb_checkpoints/
+*.ipynb
+
+# --- Logs --------------------------------------------------------------------
+*.log
+logs/
+
+# --- Docker ------------------------------------------------------------------
+.dockerignore
+
+# --- Render / Railway build artefacts ----------------------------------------
+.render/

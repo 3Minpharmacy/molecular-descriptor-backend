@@ -1,0 +1,36 @@
+# =============================================================================
+# render.yaml — Render.com deployment configuration
+# =============================================================================
+# Deploy this repository at https://render.com by connecting your GitHub
+# repository and selecting "Blueprint" in the dashboard.
+#
+# Documentation: https://render.com/docs/blueprint-spec
+# =============================================================================
+
+services:
+  - type: web
+    name: molecularmind-api
+    runtime: python
+    region: oregon                      # Closest to most users; change as needed
+    plan: starter                       # Upgrade to standard for production workloads
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 2
+    healthCheckPath: /health
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: LOG_LEVEL
+        value: INFO
+      - key: RELOAD
+        value: "false"
+      - key: MAX_ATOM_COUNT
+        value: "500"
+      # Set ALLOWED_ORIGINS in the Render dashboard as a secret env var:
+      # ALLOWED_ORIGINS=https://your-frontend.vercel.app,https://yourdomain.com
+      - key: ALLOWED_ORIGINS
+        value: "*"                      # Restrict in production!
+      - key: ENABLE_MORDRED
+        value: "false"
+
+    autoDeploy: true                    # Redeploy on every push to the main branch
